@@ -61,6 +61,7 @@ function App() {
                                 fontWeight: 700,
                                 letterSpacing: '.3rem',
                                 color: 'inherit',
+                                paddingLeft: '10px',
                                 textDecoration: 'none',
                             }}
                         >
