@@ -56,7 +56,7 @@ function App() {
                             href="#app-bar-with-responsive-menu"
                             sx={{
                                 mr: 2,
-                                display: { xs: 'none', md: 'flex' },
+                                display: { md: 'flex' },
                                 fontFamily: 'monospace',
                                 fontWeight: 700,
                                 letterSpacing: '.3rem',
@@ -64,7 +64,7 @@ function App() {
                                 textDecoration: 'none',
                             }}
                         >
-                            LOGO
+                            Homemade Netflix
                         </Typography>
                     </Toolbar>
                     <Paper sx={{maxWidth: '100%'}}>
