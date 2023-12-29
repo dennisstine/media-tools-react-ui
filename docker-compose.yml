@@ -1,13 +1,9 @@
 version: '3'
 
 services:
-  reverse:
+  ui-port-80:
     container_name: server-home-page
     hostname: plex-server
     image: dennisstine/media-server-home
     ports:
       -  "80:80"
-      - "443:443"
-    volumes:
-      - /data/.ssl/plex.crt:/etc/nginx/ssl/plex.crt
-      - /data/.ssl/plex.key:/etc/nginx/ssl/plex.key
