@@ -1,0 +1,9 @@
+nginx expects to find plex.crt and plex.key in /data/.ssl/
+
+Follow these steps to generate or recreate the keys (need to be in /data/.ssl/)
+
+Adding the SSL cert:
+
+plex.conf: see file in .nginx
+
+openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout plex.key -out plex.crt -config plex.conf -passin pass:
