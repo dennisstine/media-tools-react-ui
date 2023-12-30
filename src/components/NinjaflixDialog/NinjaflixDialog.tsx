@@ -13,8 +13,7 @@ const NinjaflixDialog: FC<NinjaflixDialogProps> = (props: NinjaflixDialogProps) 
 
             <Dialog
                 fullScreen
-                open={true}
-                // open={!props.introWatched}
+                open={!props.introWatched}
             >
                 <div className="animate__animated animate__bounceInDown ">
                     <div className="animate__animated animate__bounce animate__delay-2s">
