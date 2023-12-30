@@ -6,11 +6,11 @@ import {
     Container,
     createTheme,
     CssBaseline,
-    Divider,
     Grid,
     Link,
     List,
     ListItemButton,
+    ListItemIcon,
     ListItemText,
     Paper,
     Switch,
@@ -101,17 +101,23 @@ function App() {
             <NinjaflixDialog introWatched={introWatched}/>
             <div className="App">
                 <Container component="main" maxWidth="md">
-                    <Toolbar disableGutters sx={{paddingBottom: "10px"}}>
+                    <Toolbar disableGutters sx={{padding: "10px 0 10px"}}>
                         <div style={{display: "flex", width: "100%"}}>
-                            <Grid container spacing={1} alignItems="center">
-                                <Grid item xs={2} justifySelf="flex-start">
+                            <Grid container alignItems="center">
+                                <Grid item xs={2}>
                                     <Avatar alt="minininja" src="/images/minininja.png"
-                                            sx={{alignItems: "center", verticalAlign: "middle", width: 56, height: 56}}/>
+                                            sx={{
+                                                alignItems: "center",
+                                                verticalAlign: "middle",
+                                                width: 56,
+                                                height: 56
+                                            }}/>
                                 </Grid>
-                                <Grid item xs={8} justifySelf="center" padding="0">
-                                    <img alt="ninjaflix" src="/images/ninjaflix.png" style={{verticalAlign: "middle", transform: "scale(0.7)"}}/>
+                                <Grid item xs={8} sx={{paddingLeft: 0}}>
+                                    <img alt="ninjaflix" src="/images/ninjaflix.png"
+                                         style={{verticalAlign: "middle", transform: "scale(0.65)"}}/>
                                 </Grid>
-                                <Grid item xs={2} justifySelf="flex-end">
+                                <Grid item xs={2}>
                                     <Switch checked={advancedOpen} onClick={handleToggle} sx={{float: "right"}}/>
                                 </Grid>
                             </Grid>
@@ -141,7 +147,6 @@ function App() {
                                                       port={8080}/>
                             <Collapse in={advancedOpen} timeout="auto" unmountOnExit>
                                 <List component="div" disablePadding>
-                                    <Divider/>
                                     {/* -- cadvisor -- */}
                                     <ContainerServiceListItem serviceName={'cadvisor'}
                                                               primaryText={'cAdvisor'}
@@ -152,10 +157,15 @@ function App() {
                                                               primaryText={'Fedora Web Console'}
                                                               secondaryText={'OS-provided web-based management console'}
                                                               port={9090}/>
-                                    {/*    reset/re-watch intro */}
+                                    {/* -- reset/re-watch intro -- */}
                                     <ListItemButton component={Link} onClick={() => handleIntroAnimationReset()} dense>
-                                        <ListItemText primary="Re-set/re-enable animation"
-                                                      secondary="Re-enable the intro animation and play it now!"/>
+                                        <ListItemIcon>
+                                            <Avatar alt={"ninjaflix"}
+                                                    src={"/images/ninjaflix_tn.jpg"}
+                                                    sx={{width: 48, height: 48}}/>
+                                        </ListItemIcon>
+                                        <ListItemText primary="Show into animation"
+                                                      secondary="Show the intro animation again"/>
                                     </ListItemButton>
                                 </List>
                             </Collapse>
