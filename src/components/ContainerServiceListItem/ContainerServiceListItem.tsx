@@ -1,6 +1,6 @@
 import React, {FC} from 'react';
 import './ContainerServiceListItem.css';
-import {Avatar, IconButton, Link, ListItem, ListItemButton, ListItemIcon, ListItemText} from "@mui/material";
+import {Avatar, Link, ListItem, ListItemButton, ListItemIcon, ListItemText} from "@mui/material";
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 
 interface ContainerServiceListItemProps {
@@ -15,11 +15,7 @@ const ContainerServiceListItem: FC<ContainerServiceListItemProps> = (props: Cont
 
 
     return (
-        <ListItem secondaryAction={
-            <IconButton edge="end" aria-label="open-in-new-icon-btn" sx={{paddingRight: "16px"}}>
-                <OpenInNewIcon/>
-            </IconButton>
-        }>
+        <ListItem>
             <ListItemButton component={Link} href={`http://192.168.1.200:${props.port}`} target={"_blank"} dense>
                 <ListItemIcon>
                     <Avatar alt={`${props.serviceName.toLowerCase()}`}
@@ -27,6 +23,7 @@ const ContainerServiceListItem: FC<ContainerServiceListItemProps> = (props: Cont
                             sx={{width: 48, height: 48}}/>
                 </ListItemIcon>
                 <ListItemText primary={`${props.primaryText}`} secondary={`${props.secondaryText}`}/>
+                <OpenInNewIcon/>
             </ListItemButton>
         </ListItem>
     );

@@ -2,20 +2,17 @@ import React from 'react';
 import './App.css';
 import {
     Avatar,
+    Collapse,
     Container,
     createTheme,
     CssBaseline,
     Divider,
-    FormControlLabel,
-    FormGroup,
-    Grow,
-    IconButton,
+    Grid,
     Link,
     List,
     ListItemButton,
     ListItemText,
     Paper,
-    Stack,
     Switch,
     ThemeProvider,
     Toolbar
@@ -105,25 +102,20 @@ function App() {
             <div className="App">
                 <Container component="main" maxWidth="md">
                     <Toolbar disableGutters sx={{paddingBottom: "10px"}}>
-                        <Stack
-                            direction="row"
-                            justifyContent="space-between"
-                            alignItems="center"
-                            spacing={0.5}
-                            sx={{paddingTop: "10px", minWidth: "100%"}}
-                        >
-                            <Avatar alt="minininja" src="/images/minininja.png"
-                                    sx={{verticalAlign: "middle", maxWidth: "15%", width: 56, height: 56}}/>
-                            <img alt="ninjaflix" src="/images/ninjaflix.png"
-                                 style={{verticalAlign: "middle", maxWidth: "70%"}}/>
-                            <FormGroup sx={{maxWidth: "15%"}}>
-                                <IconButton/>
-                                <FormControlLabel control={<Switch checked={advancedOpen} onClick={handleToggle}/>}
-                                                  label=""
-                                                  sx={{verticalAlign: "middle", maxWidth: "15%"}}/>
-                            </FormGroup>
-                        </Stack>
-
+                        <div style={{display: "flex", width: "100%"}}>
+                            <Grid container spacing={1} alignItems="center">
+                                <Grid item xs={2} justifySelf="flex-start">
+                                    <Avatar alt="minininja" src="/images/minininja.png"
+                                            sx={{alignItems: "center", verticalAlign: "middle", width: 56, height: 56}}/>
+                                </Grid>
+                                <Grid item xs={8} justifySelf="center" padding="0">
+                                    <img alt="ninjaflix" src="/images/ninjaflix.png" style={{verticalAlign: "middle", transform: "scale(0.7)"}}/>
+                                </Grid>
+                                <Grid item xs={2} justifySelf="flex-end">
+                                    <Switch checked={advancedOpen} onClick={handleToggle} sx={{float: "right"}}/>
+                                </Grid>
+                            </Grid>
+                        </div>
                     </Toolbar>
                     <Paper sx={{maxWidth: '100%'}}>
                         <List sx={{alignItems: 'left', width: '100%'}}>
@@ -147,35 +139,29 @@ function App() {
                                                       primaryText={'sabnzbd'}
                                                       secondaryText={'Check out what\'s downloading'}
                                                       port={8080}/>
+                            <Collapse in={advancedOpen} timeout="auto" unmountOnExit>
+                                <List component="div" disablePadding>
+                                    <Divider/>
+                                    {/* -- cadvisor -- */}
+                                    <ContainerServiceListItem serviceName={'cadvisor'}
+                                                              primaryText={'cAdvisor'}
+                                                              secondaryText={'Resource usage and performance of running containers'}
+                                                              port={8282}/>
+                                    {/* -- fedora console -- */}
+                                    <ContainerServiceListItem serviceName={'fedora'}
+                                                              primaryText={'Fedora Web Console'}
+                                                              secondaryText={'OS-provided web-based management console'}
+                                                              port={9090}/>
+                                    {/*    reset/re-watch intro */}
+                                    <ListItemButton component={Link} onClick={() => handleIntroAnimationReset()} dense>
+                                        <ListItemText primary="Re-set/re-enable animation"
+                                                      secondary="Re-enable the intro animation and play it now!"/>
+                                    </ListItemButton>
+                                </List>
+                            </Collapse>
                         </List>
                     </Paper>
-                    <Divider/>
-                    {/*<Grow in={advancedOpen}>*/}
-                    <Grow in={advancedOpen}>
-                        <Paper sx={{maxWidth: '100%'}}>
-                            <List sx={{alignItems: 'left', width: '100%'}}>
-
-                                {/* -- cadvisor -- */}
-                                <ContainerServiceListItem serviceName={'cadvisor'}
-                                                          primaryText={'cAdvisor'}
-                                                          secondaryText={'Resource usage and performance of running containers'}
-                                                          port={8282}/>
-                                {/* -- fedora console -- */}
-                                <ContainerServiceListItem serviceName={'fedora'}
-                                                          primaryText={'Fedora Web Console'}
-                                                          secondaryText={'OS-provided web-based management console'}
-                                                          port={9090}/>
-                                {/*    reset/re-watch intro */}
-                                <ListItemButton component={Link} onClick={() => handleIntroAnimationReset()} dense>
-                                    <ListItemText primary="Re-set/re-enable animation"
-                                                  secondary="Re-enable the intro animation and play it now!"/>
-                                </ListItemButton>
-                            </List>
-                        </Paper>
-                    </Grow>
-                    {/*</Grow>*/}
                 </Container>
-
             </div>
         </ThemeProvider>
     );
