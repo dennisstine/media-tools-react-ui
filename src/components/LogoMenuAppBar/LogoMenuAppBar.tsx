@@ -3,8 +3,11 @@ import './LogoMenuAppBar.css';
 import {AppBar, Avatar, Grid, IconButton, Menu, MenuItem, Switch, Toolbar} from "@mui/material";
 
 interface LogoMenuAppBarProps {
-    handleToggle: () => void;
+
     advancedOpen: boolean;
+    handleToggle: () => void;
+
+    handleMetricsDialogOpen: () => void;
 }
 
 const LogoMenuAppBar: FC<LogoMenuAppBarProps> = (props: LogoMenuAppBarProps) => {
@@ -88,7 +91,8 @@ const LogoMenuAppBar: FC<LogoMenuAppBarProps> = (props: LogoMenuAppBarProps) => 
                             open={Boolean(anchorEl)}
                             onClose={handleMenuClose}
                         >
-                            <MenuItem>Show Advanced<Switch checked={props.advancedOpen} onClick={props.handleToggle} sx={{float: "right"}}/></MenuItem>
+                            <MenuItem>Show Nerd Links<Switch checked={props.advancedOpen} onClick={props.handleToggle} sx={{float: "right"}}/></MenuItem>
+                            <MenuItem onClick={props.handleMetricsDialogOpen}>Metrics</MenuItem>
                         </Menu>
                     </div>
 

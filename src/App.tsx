@@ -18,6 +18,8 @@ import {
 import ContainerServiceListItem from "./components/ContainerServiceListItem/ContainerServiceListItem";
 import NinjaflixDialog from "./components/NinjaflixDialog/NinjaflixDialog";
 import LogoMenuAppBar from "./components/LogoMenuAppBar/LogoMenuAppBar";
+import {faTv} from "@fortawesome/free-solid-svg-icons";
+import MetricsDialog from "./components/MetricsDialog/MetricsDialog";
 
 const darkTheme = createTheme({
     palette: {
@@ -50,6 +52,7 @@ function App() {
 
     const [advancedOpen, setAdvancedOpen] = React.useState(localStorage.getItem(advToggledLSKey) === "true");
     const [introWatched, setIntroWatched] = React.useState(localStorage.getItem(introWatchedLSKey) === "true");
+    const [apiMetricsOpen, setApiMetricsOpen] = React.useState<boolean>(false);
 
     React.useEffect(() => {
         localStorage.setItem(advToggledLSKey, String(advancedOpen));
@@ -71,6 +74,14 @@ function App() {
     const handleToggle = () => {
         localStorage.setItem(advToggledLSKey, String(!advancedOpen));
         setAdvancedOpen(!advancedOpen);
+    };
+
+    const handleMetricsDialogOpen = () => {
+        setApiMetricsOpen(true);
+    };
+
+    const handleMetricsDialogClose = () => {
+        setApiMetricsOpen(false);
     };
 
 
@@ -101,9 +112,10 @@ function App() {
         <ThemeProvider theme={darkTheme}>
             <CssBaseline/>
             <NinjaflixDialog introWatched={introWatched} />
+            <MetricsDialog apiMetricsOpen={apiMetricsOpen} handleMetricsDialogClose={handleMetricsDialogClose} />
             <div className="App">
                 <Container component="main" maxWidth="md">
-                    <LogoMenuAppBar handleToggle={handleToggle} advancedOpen={advancedOpen} />
+                    <LogoMenuAppBar handleMetricsDialogOpen={handleMetricsDialogOpen} advancedOpen={advancedOpen} handleToggle={handleToggle} />
                     <Paper sx={{maxWidth: '100%'}}>
                         <List sx={{alignItems: 'left', width: '100%', paddingTop: 0}}>
                             {/* -- plex -- */}
@@ -114,12 +126,13 @@ function App() {
                             {/* -- radarr -- */}
                             <ContainerServiceListItem serviceName={'radarr'}
                                                       primaryText={'Radarr'}
-                                                      secondaryText={'Find new TV shows to download and watch'}
+                                                      secondaryText={'Find new movies to download and watch'}
                                                       port={7878}/>
                             {/* -- sonarr -- */}
                             <ContainerServiceListItem serviceName={'sonarr'}
                                                       primaryText={'Sonarr'}
-                                                      secondaryText={'Find new movies to download and watch'}
+                                                      secondaryText={'Find TV shows to download and watch'}
+                                                      secondaryTextIcon={faTv}
                                                       port={8989}/>
                             {/* -- sabnzbd -- */}
                             <ContainerServiceListItem serviceName={'sabnzbd'}
