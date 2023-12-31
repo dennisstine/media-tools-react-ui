@@ -6,20 +6,18 @@ import {
     Container,
     createTheme,
     CssBaseline,
-    Grid,
     Link,
     List,
     ListItemButton,
     ListItemIcon,
     ListItemText,
     Paper,
-    Switch,
-    ThemeProvider,
-    Toolbar
+    ThemeProvider
 } from "@mui/material";
 
 import ContainerServiceListItem from "./components/ContainerServiceListItem/ContainerServiceListItem";
 import NinjaflixDialog from "./components/NinjaflixDialog/NinjaflixDialog";
+import LogoMenuAppBar from "./components/LogoMenuAppBar/LogoMenuAppBar";
 
 const darkTheme = createTheme({
     palette: {
@@ -76,6 +74,8 @@ function App() {
     };
 
 
+
+
     /**
      * Sets local storage and react state back to the initial (false) state for if the intro
      * animation has been displayed to the user.
@@ -95,55 +95,17 @@ function App() {
         }, 5000);
     }
 
-    const animateAppBarLogo = () => {
 
-        let wrapper = document.getElementById("ninjaflix-logo-wrapper");
-
-        wrapper?.classList.add('animate__animated');
-        wrapper?.classList.add('animate__hinge');
-
-        setTimeout(function() {
-            wrapper?.classList.remove('animate__hinge');
-            wrapper?.classList.remove('animate__animated');
-
-        }, 2000);
-    }
 
     return (
         <ThemeProvider theme={darkTheme}>
             <CssBaseline/>
-            <NinjaflixDialog introWatched={introWatched}/>
+            <NinjaflixDialog introWatched={introWatched} />
             <div className="App">
                 <Container component="main" maxWidth="md">
-                    <Toolbar disableGutters sx={{padding: "10px 0 10px"}}>
-                        <div style={{display: "flex", width: "100%"}}>
-                            <Grid container alignItems="center">
-                                <Grid item xs={2}>
-                                    <Avatar alt="minininja" src="/images/minininja.png"
-                                            sx={{
-                                                alignItems: "center",
-                                                verticalAlign: "middle",
-                                                width: 56,
-                                                height: 56
-                                            }}/>
-                                </Grid>
-                                <Grid item xs={8}>
-                                    <div className="animate__animated animate__bounceInDown" id="ninjaflix-logo-wrapper">
-                                    <img alt="ninjaflix" src="/images/ninjaflix.png"
-                                         id="ninjaflix-logo"
-                                         width={"100%"}
-                                         style={{transform: "scale(0.65)"}}
-                                         onClick={animateAppBarLogo}/>
-                                    </div>
-                                </Grid>
-                                <Grid item xs={2}>
-                                    <Switch checked={advancedOpen} onClick={handleToggle} sx={{float: "right"}}/>
-                                </Grid>
-                            </Grid>
-                        </div>
-                    </Toolbar>
+                    <LogoMenuAppBar handleToggle={handleToggle} advancedOpen={advancedOpen} />
                     <Paper sx={{maxWidth: '100%'}}>
-                        <List sx={{alignItems: 'left', width: '100%'}}>
+                        <List sx={{alignItems: 'left', width: '100%', paddingTop: 0}}>
                             {/* -- plex -- */}
                             <ContainerServiceListItem serviceName={'plex'}
                                                       primaryText={'Plex'}
