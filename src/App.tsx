@@ -95,6 +95,20 @@ function App() {
         }, 5000);
     }
 
+    const animateAppBarLogo = () => {
+
+        let wrapper = document.getElementById("ninjaflix-logo-wrapper");
+
+        wrapper?.classList.add('animate__animated');
+        wrapper?.classList.add('animate__hinge');
+
+        setTimeout(function() {
+            wrapper?.classList.remove('animate__hinge');
+            wrapper?.classList.remove('animate__animated');
+
+        }, 2000);
+    }
+
     return (
         <ThemeProvider theme={darkTheme}>
             <CssBaseline/>
@@ -113,9 +127,14 @@ function App() {
                                                 height: 56
                                             }}/>
                                 </Grid>
-                                <Grid item xs={8} sx={{paddingLeft: 0}}>
+                                <Grid item xs={8}>
+                                    <div className="animate__animated animate__bounceInDown" id="ninjaflix-logo-wrapper">
                                     <img alt="ninjaflix" src="/images/ninjaflix.png"
-                                         style={{verticalAlign: "middle", transform: "scale(0.65)"}}/>
+                                         id="ninjaflix-logo"
+                                         width={"100%"}
+                                         style={{transform: "scale(0.65)"}}
+                                         onClick={animateAppBarLogo}/>
+                                    </div>
                                 </Grid>
                                 <Grid item xs={2}>
                                     <Switch checked={advancedOpen} onClick={handleToggle} sx={{float: "right"}}/>
@@ -164,7 +183,7 @@ function App() {
                                                     src={"/images/ninjaflix_tn.jpg"}
                                                     sx={{width: 48, height: 48}}/>
                                         </ListItemIcon>
-                                        <ListItemText primary="Show into animation"
+                                        <ListItemText primary="Show intro animation"
                                                       secondary="Show the intro animation again"/>
                                     </ListItemButton>
                                 </List>
