@@ -12,7 +12,7 @@ const NinjaflixDialog: FC<NinjaflixDialogProps> = (props: NinjaflixDialogProps) 
     return (
         <Dialog fullScreen open={!props.introWatched}>
             <div className="animate__animated animate__bounceInDown ">
-                <div className="animate__animated animate__bounce animate__delay-2s">
+                <div className="animate__animated animate__headShake animate__delay-2s">
                     <div className="animate__animated animate__bounceOutUp animate__delay-4s">
                         <Grid
                             container
