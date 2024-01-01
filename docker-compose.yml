@@ -5,5 +5,9 @@ services:
     container_name: server-home-page
     hostname: plex-server
     image: dennisstine/media-server-home
+#    volumes:
+#      - /etc/ssl/certs/nginx-ninjaflix.dennisstine.dev.crt:/etc/ssl/certs/nginx-ninjaflix.dennisstine.dev.crt
+#      - /etc/ssl/private/nginx-ninjaflix.dennisstine.dev.key:/etc/ssl/private/nginx-ninjaflix.dennisstine.dev.key
     ports:
-      -  "80:80"
+      - "8088:80"
+      - "8443:443"
