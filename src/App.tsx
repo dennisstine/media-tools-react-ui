@@ -18,7 +18,6 @@ import {
 import ContainerServiceListItem from "./components/ContainerServiceListItem/ContainerServiceListItem";
 import NinjaflixDialog from "./components/NinjaflixDialog/NinjaflixDialog";
 import LogoMenuAppBar from "./components/LogoMenuAppBar/LogoMenuAppBar";
-import {faTv} from "@fortawesome/free-solid-svg-icons";
 import MetricsDialog from "./components/MetricsDialog/MetricsDialog";
 
 const darkTheme = createTheme({
@@ -122,34 +121,34 @@ function App() {
                             <ContainerServiceListItem serviceName={'plex'}
                                                       primaryText={'Plex'}
                                                       secondaryText={'Watch Movies and TV'}
-                                                      port={32400}/>
+                                                      context={'/plex'}/>
                             {/* -- radarr -- */}
                             <ContainerServiceListItem serviceName={'radarr'}
                                                       primaryText={'Radarr'}
                                                       secondaryText={'Find new movies to download and watch'}
-                                                      port={7878}/>
+                                                      context={'/radarr'}/>
                             {/* -- sonarr -- */}
                             <ContainerServiceListItem serviceName={'sonarr'}
                                                       primaryText={'Sonarr'}
                                                       secondaryText={'Find TV shows to download and watch'}
-                                                      secondaryTextIcon={faTv}
-                                                      port={8989}/>
+                                                      context={'/sonarr'}/>
                             {/* -- sabnzbd -- */}
                             <ContainerServiceListItem serviceName={'sabnzbd'}
                                                       primaryText={'sabnzbd'}
                                                       secondaryText={'Check out what\'s downloading'}
-                                                      port={8080}/>
+                                                      context={'/sabnzbd'}/>
                             <Collapse in={advancedOpen} timeout="auto" unmountOnExit>
                                 <List component="div" disablePadding>
                                     {/* -- cadvisor -- */}
                                     <ContainerServiceListItem serviceName={'cadvisor'}
                                                               primaryText={'cAdvisor'}
                                                               secondaryText={'Resource usage and performance of running containers'}
-                                                              port={8282}/>
+                                                              context={"/cadvisor"}/>
                                     {/* -- fedora console -- */}
                                     <ContainerServiceListItem serviceName={'fedora'}
                                                               primaryText={'Fedora Web Console'}
                                                               secondaryText={'OS-provided web-based management console'}
+                                                              context={"/fedora-console"}
                                                               port={9090}/>
                                     {/* -- reset/re-watch intro -- */}
                                     <ListItemButton component={Link} onClick={() => handleIntroAnimationReset()} dense>
