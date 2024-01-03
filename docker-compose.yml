@@ -2,13 +2,11 @@ version: '3'
 
 services:
   ui-port-80:
-    container_name: server-home-page
+    container_name: media-server-home
     hostname: plex-server
     image: dennisstine/media-server-home
     volumes:
-      - /etc/letsencrypt/live/ninjaflix.dennisstine.dev/fullchain.pem:/etc/letsencrypt/live/ninjaflix.dennisstine.dev/fullchain.pem
-      - /etc/letsencrypt/live/ninjaflix.dennisstine.dev/privkey.pem:/etc/letsencrypt/live/ninjaflix.dennisstine.dev/privkey.pem
-      - /etc/nginx/mime.types:/etc/nginx/mime.types
+      - /etc/nginx/:/etc/nginx/
     ports:
       - "80:80"
       - "443:443"

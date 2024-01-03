@@ -37,4 +37,4 @@ Generating DH parameters, 2048 bit long safe prime
 
 
 
-certbot certonly --expand -d ninjaflix.dennisstine.dev
+certbot certonly --expand -d minininja.dev -d plex.minininja.dev -d radarr.minininja.dev -d sonarr.minininja.dev -d sabnzbd.minininja.dev -d cadvisor.minininja.dev -d cockpit.minininja.dev
