@@ -6,7 +6,9 @@ services:
     hostname: plex-server
     image: dennisstine/media-server-home
     volumes:
-      - /etc/nginx/:/etc/nginx/
+      - /etc/letsencrypt/live/minininja.dev/fullchain.pem:/etc/letsencrypt/live/minininja.dev/fullchain.pem
+      - /etc/letsencrypt/live/minininja.dev/privkey.pem:/etc/letsencrypt/live/minininja.dev/privkey.pem
+      - /etc/nginx/mime.types:/etc/nginx/mime.types
     ports:
       - "80:80"
       - "443:443"
