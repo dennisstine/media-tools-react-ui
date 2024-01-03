@@ -8,20 +8,16 @@ interface ContainerServiceListItemProps {
     serviceName: string;
     primaryText: string;
     secondaryText: string;
-    context: string;
+    subdomain: string;
     port?: number;
 }
 
 const ContainerServiceListItem: FC<ContainerServiceListItemProps> = (props: ContainerServiceListItemProps) => {
 
-    const getUrlFromProps = () => {
-        return props.port ? `http://192.168.1.200:${props.port}`
-            : `https://ninjaflix.dennisstine.dev${props.context}`
-    }
     return (
         <ListItem sx={{padding: 0}} >
             <ListItemButton component={Link}
-                            href={getUrlFromProps()}
+                            href={`https://${props.subdomain}.minininja.dev`}
                             target={"_blank"}
                             dense
                             sx={{minHeight: "75px"}}>

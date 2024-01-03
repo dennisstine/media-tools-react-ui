@@ -37,4 +37,26 @@ Generating DH parameters, 2048 bit long safe prime
 
 
 
-certbot certonly --expand -d minininja.dev -d plex.minininja.dev -d radarr.minininja.dev -d sonarr.minininja.dev -d sabnzbd.minininja.dev -d cadvisor.minininja.dev -d cockpit.minininja.dev
+certbot certonly --expand -d minininja.dev -d plex.minininja.dev -d radarr.minininja.dev -d sonarr.minininja.dev -d sabnzbd.minininja.dev -d dex.minininja.dev -d cockpit.minininja.dev -d grafana.minininja.dev -d prometheus.minininja.dev
+
+
+
+
+cp /etc/letsencrypt/live/minininja.dev/fullchain.pem /etc/cockpit/ws-certs.d/minininja.dev.crt
+cp /etc/letsencrypt/live/minininja.dev/privkey.pem /etc/cockpit/ws-certs.d/minininja.dev.key
+# Note: The user and group may be different
+chown cockpit-ws:cockpit-ws /etc/cockpit/ws-certs.d/minininja.dev.crt /etc/cockpit/ws-certs.d/minininja.dev.key
+
+/etc/letsencrypt/renewal-hooks/post
+00-restart-cockpit.sh
+
+    #!/usr/bin/env bash
+
+    echo "SSL certificates renewed"
+
+    cp /etc/letsencrypt/live/minininja.dev/fullchain.pem /etc/cockpit/ws-certs.d/minininja.dev.crt
+    cp /etc/letsencrypt/live/minininja.dev/privkey.pem /etc/cockpit/ws-certs.d/minininja.dev.key
+    chown cockpit-ws:cockpit-ws /etc/cockpit/ws-certs.d/minininja.dev.crt /etc/cockpit/ws-certs.d/minininja.dev.key
+
+    echo "Restarting Cockpit"
+    systemctl restart cockpit

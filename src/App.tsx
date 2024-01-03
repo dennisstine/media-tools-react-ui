@@ -121,35 +121,34 @@ function App() {
                             <ContainerServiceListItem serviceName={'plex'}
                                                       primaryText={'Plex'}
                                                       secondaryText={'Watch Movies and TV'}
-                                                      context={'/plex'}/>
+                                                      subdomain={'plex'}/>
                             {/* -- radarr -- */}
                             <ContainerServiceListItem serviceName={'radarr'}
                                                       primaryText={'Radarr'}
                                                       secondaryText={'Find new movies to download and watch'}
-                                                      context={'/radarr'}/>
+                                                      subdomain={'radarr'}/>
                             {/* -- sonarr -- */}
                             <ContainerServiceListItem serviceName={'sonarr'}
                                                       primaryText={'Sonarr'}
                                                       secondaryText={'Find TV shows to download and watch'}
-                                                      context={'/sonarr'}/>
+                                                      subdomain={'sonarr'}/>
                             {/* -- sabnzbd -- */}
                             <ContainerServiceListItem serviceName={'sabnzbd'}
                                                       primaryText={'sabnzbd'}
                                                       secondaryText={'Check out what\'s downloading'}
-                                                      context={'/sabnzbd'}/>
+                                                      subdomain={'sabnzbd'}/>
                             <Collapse in={advancedOpen} timeout="auto" unmountOnExit>
                                 <List component="div" disablePadding>
-                                    {/* -- cadvisor -- */}
-                                    <ContainerServiceListItem serviceName={'cadvisor'}
-                                                              primaryText={'cAdvisor'}
-                                                              secondaryText={'Resource usage and performance of running containers'}
-                                                              context={"/cadvisor"}/>
+                                    {/* -- grafana -- */}
+                                    <ContainerServiceListItem serviceName={'grafana'}
+                                                              primaryText={'Grafana'}
+                                                              secondaryText={'Container/host usage dashboard'}
+                                                              subdomain={"grafana"}/>
                                     {/* -- fedora console -- */}
                                     <ContainerServiceListItem serviceName={'fedora'}
                                                               primaryText={'Fedora Web Console'}
                                                               secondaryText={'OS-provided web-based management console'}
-                                                              context={"/fedora-console"}
-                                                              port={9090}/>
+                                                              subdomain={"cockpit"} />
                                     {/* -- reset/re-watch intro -- */}
                                     <ListItemButton component={Link} onClick={() => handleIntroAnimationReset()} dense>
                                         <ListItemIcon>

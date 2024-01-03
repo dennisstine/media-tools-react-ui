@@ -11,6 +11,9 @@ FROM nginx:latest
 # Copy the nginx configs
 COPY .nginx/*.conf /etc/nginx/
 
+# Copy the cockpit config
+COPY --chown=cockpit-ws:cockpit-ws .cockpit/cockpit.conf /etc/cockpit/cockpit.conf
+
 # Copy the build output to replace the default .nginx contents.
 COPY --from=build /usr/local/app/build/ /usr/share/nginx/html
 
