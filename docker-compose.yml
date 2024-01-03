@@ -5,9 +5,11 @@ services:
     container_name: server-home-page
     hostname: plex-server
     image: dennisstine/media-server-home
-#    volumes:
-#      - /etc/ssl/certs/nginx-ninjaflix.dennisstine.dev.crt:/etc/ssl/certs/nginx-ninjaflix.dennisstine.dev.crt
-#      - /etc/ssl/private/nginx-ninjaflix.dennisstine.dev.key:/etc/ssl/private/nginx-ninjaflix.dennisstine.dev.key
+    volumes:
+      - /etc/letsencrypt/live/ninjaflix.dennisstine.dev/fullchain.pem:/etc/letsencrypt/live/ninjaflix.dennisstine.dev/fullchain.pem
+      - /etc/letsencrypt/live/ninjaflix.dennisstine.dev/privkey.pem:/etc/letsencrypt/live/ninjaflix.dennisstine.dev/privkey.pem
+      - /etc/nginx/mime.types:/etc/nginx/mime.types
     ports:
-      - "8088:80"
-      - "8443:443"
+      - "80:80"
+      - "443:443"
+    command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"

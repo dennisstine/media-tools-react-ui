@@ -36,4 +36,5 @@ Generating DH parameters, 2048 bit long safe prime
 
 
 
-https://pentacent.medium.com/nginx-and-lets-encrypt-with-docker-in-less-than-5-minutes-b4b8a60d3a71
+
+certbot certonly --expand -d ninjaflix.dennisstine.dev
