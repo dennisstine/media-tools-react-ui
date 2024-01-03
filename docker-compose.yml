@@ -2,7 +2,7 @@ version: '3'
 
 services:
   ui-port-80:
-    container_name: media-server-home
+    container_name: server-home-page
     hostname: plex-server
     image: dennisstine/media-server-home
     volumes:
