@@ -18,7 +18,6 @@ import {
 import ContainerServiceListItem from "./components/ContainerServiceListItem/ContainerServiceListItem";
 import NinjaflixDialog from "./components/NinjaflixDialog/NinjaflixDialog";
 import LogoMenuAppBar from "./components/LogoMenuAppBar/LogoMenuAppBar";
-import MetricsDialog from "./components/MetricsDialog/MetricsDialog";
 
 const darkTheme = createTheme({
     palette: {
@@ -51,7 +50,6 @@ function App() {
 
     const [advancedOpen, setAdvancedOpen] = React.useState(localStorage.getItem(advToggledLSKey) === "true");
     const [introWatched, setIntroWatched] = React.useState(localStorage.getItem(introWatchedLSKey) === "true");
-    const [apiMetricsOpen, setApiMetricsOpen] = React.useState<boolean>(false);
 
     React.useEffect(() => {
         localStorage.setItem(advToggledLSKey, String(advancedOpen));
@@ -74,17 +72,6 @@ function App() {
         localStorage.setItem(advToggledLSKey, String(!advancedOpen));
         setAdvancedOpen(!advancedOpen);
     };
-
-    const handleMetricsDialogOpen = () => {
-        setApiMetricsOpen(true);
-    };
-
-    const handleMetricsDialogClose = () => {
-        setApiMetricsOpen(false);
-    };
-
-
-
 
     /**
      * Sets local storage and react state back to the initial (false) state for if the intro
@@ -111,45 +98,43 @@ function App() {
         <ThemeProvider theme={darkTheme}>
             <CssBaseline/>
             <NinjaflixDialog introWatched={introWatched} />
-            <MetricsDialog apiMetricsOpen={apiMetricsOpen} handleMetricsDialogClose={handleMetricsDialogClose} />
             <div className="App">
                 <Container component="main" maxWidth="md">
-                    <LogoMenuAppBar handleMetricsDialogOpen={handleMetricsDialogOpen} advancedOpen={advancedOpen} handleToggle={handleToggle} />
+                    <LogoMenuAppBar advancedOpen={advancedOpen} handleToggle={handleToggle} />
                     <Paper sx={{maxWidth: '100%'}}>
                         <List sx={{alignItems: 'left', width: '100%', paddingTop: 0}}>
                             {/* -- plex -- */}
                             <ContainerServiceListItem serviceName={'plex'}
                                                       primaryText={'Plex'}
                                                       secondaryText={'Watch Movies and TV'}
-                                                      context={'/plex'}/>
+                                                      subdomain={'plex'}/>
                             {/* -- radarr -- */}
                             <ContainerServiceListItem serviceName={'radarr'}
                                                       primaryText={'Radarr'}
                                                       secondaryText={'Find new movies to download and watch'}
-                                                      context={'/radarr'}/>
+                                                      subdomain={'radarr'}/>
                             {/* -- sonarr -- */}
                             <ContainerServiceListItem serviceName={'sonarr'}
                                                       primaryText={'Sonarr'}
                                                       secondaryText={'Find TV shows to download and watch'}
-                                                      context={'/sonarr'}/>
+                                                      subdomain={'sonarr'}/>
                             {/* -- sabnzbd -- */}
                             <ContainerServiceListItem serviceName={'sabnzbd'}
                                                       primaryText={'sabnzbd'}
                                                       secondaryText={'Check out what\'s downloading'}
-                                                      context={'/sabnzbd'}/>
+                                                      subdomain={'sabnzbd'}/>
                             <Collapse in={advancedOpen} timeout="auto" unmountOnExit>
                                 <List component="div" disablePadding>
-                                    {/* -- cadvisor -- */}
-                                    <ContainerServiceListItem serviceName={'cadvisor'}
-                                                              primaryText={'cAdvisor'}
-                                                              secondaryText={'Resource usage and performance of running containers'}
-                                                              context={"/cadvisor"}/>
+                                    {/* -- grafana -- */}
+                                    <ContainerServiceListItem serviceName={'grafana'}
+                                                              primaryText={'Grafana'}
+                                                              secondaryText={'Container/host usage dashboard'}
+                                                              subdomain={"grafana"}/>
                                     {/* -- fedora console -- */}
                                     <ContainerServiceListItem serviceName={'fedora'}
                                                               primaryText={'Fedora Web Console'}
                                                               secondaryText={'OS-provided web-based management console'}
-                                                              context={"/fedora-console"}
-                                                              port={9090}/>
+                                                              subdomain={"cockpit"} />
                                     {/* -- reset/re-watch intro -- */}
                                     <ListItemButton component={Link} onClick={() => handleIntroAnimationReset()} dense>
                                         <ListItemIcon>
