@@ -43,10 +43,10 @@ const darkTheme = createTheme({
 function App() {
 
     // the toggle value for if the "advanced" features should be shown
-    const advToggledLSKey = 'x-media-server-ui-advanced-toggle';
+    const advToggledLSKey = 'x-ninjaflix-advanced-toggle';
 
     // whether or not the intro animation has been watched
-    const introWatchedLSKey = 'x-media-server-ui-intro-watched';
+    const introWatchedLSKey = 'x-ninjaflix-intro-watched';
 
     const [advancedOpen, setAdvancedOpen] = React.useState(localStorage.getItem(advToggledLSKey) === "true");
     const [introWatched, setIntroWatched] = React.useState(localStorage.getItem(introWatchedLSKey) === "true");
