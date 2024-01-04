@@ -18,7 +18,6 @@ import {
 import ContainerServiceListItem from "./components/ContainerServiceListItem/ContainerServiceListItem";
 import NinjaflixDialog from "./components/NinjaflixDialog/NinjaflixDialog";
 import LogoMenuAppBar from "./components/LogoMenuAppBar/LogoMenuAppBar";
-import MetricsDialog from "./components/MetricsDialog/MetricsDialog";
 
 const darkTheme = createTheme({
     palette: {
@@ -51,7 +50,6 @@ function App() {
 
     const [advancedOpen, setAdvancedOpen] = React.useState(localStorage.getItem(advToggledLSKey) === "true");
     const [introWatched, setIntroWatched] = React.useState(localStorage.getItem(introWatchedLSKey) === "true");
-    const [apiMetricsOpen, setApiMetricsOpen] = React.useState<boolean>(false);
 
     React.useEffect(() => {
         localStorage.setItem(advToggledLSKey, String(advancedOpen));
@@ -74,17 +72,6 @@ function App() {
         localStorage.setItem(advToggledLSKey, String(!advancedOpen));
         setAdvancedOpen(!advancedOpen);
     };
-
-    const handleMetricsDialogOpen = () => {
-        setApiMetricsOpen(true);
-    };
-
-    const handleMetricsDialogClose = () => {
-        setApiMetricsOpen(false);
-    };
-
-
-
 
     /**
      * Sets local storage and react state back to the initial (false) state for if the intro
@@ -111,10 +98,9 @@ function App() {
         <ThemeProvider theme={darkTheme}>
             <CssBaseline/>
             <NinjaflixDialog introWatched={introWatched} />
-            <MetricsDialog apiMetricsOpen={apiMetricsOpen} handleMetricsDialogClose={handleMetricsDialogClose} />
             <div className="App">
                 <Container component="main" maxWidth="md">
-                    <LogoMenuAppBar handleMetricsDialogOpen={handleMetricsDialogOpen} advancedOpen={advancedOpen} handleToggle={handleToggle} />
+                    <LogoMenuAppBar advancedOpen={advancedOpen} handleToggle={handleToggle} />
                     <Paper sx={{maxWidth: '100%'}}>
                         <List sx={{alignItems: 'left', width: '100%', paddingTop: 0}}>
                             {/* -- plex -- */}

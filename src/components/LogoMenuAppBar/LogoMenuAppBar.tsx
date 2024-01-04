@@ -6,8 +6,6 @@ interface LogoMenuAppBarProps {
 
     advancedOpen: boolean;
     handleToggle: () => void;
-
-    handleMetricsDialogOpen: () => void;
 }
 
 const LogoMenuAppBar: FC<LogoMenuAppBarProps> = (props: LogoMenuAppBarProps) => {
@@ -43,12 +41,7 @@ const LogoMenuAppBar: FC<LogoMenuAppBarProps> = (props: LogoMenuAppBarProps) => 
     return (
         <AppBar position="static" sx={{zIndex: 30000}}>
         <Toolbar disableGutters sx={{background: "transparent", backgroundColor: "#121212", paddingTop: "5px"}} variant="dense">
-            {/*<div style={{display: "flex", width: "100%"}}>*/}
             <Grid container justifyContent="space-between" sx={{alignItems: "middle"}}>
-                {/*    /!*<Grid item xs={2}>*!/*/}
-
-                {/*    /!*    *!/*/}
-                {/*    /!*</Grid>*!/*/}
                 <Grid item className="animate__animated animate__bounceInDown" id="ninjaflix-logo-wrapper"
                       sx={{margin: "auto 10px auto", display: "block", textAlign: "left", zIndex: "fab"}}>
                         <img alt="ninjaflix" src="/images/ninjaflix.png"
@@ -92,7 +85,6 @@ const LogoMenuAppBar: FC<LogoMenuAppBarProps> = (props: LogoMenuAppBarProps) => 
                             onClose={handleMenuClose}
                         >
                             <MenuItem>Show Nerd Links<Switch checked={props.advancedOpen} onClick={props.handleToggle} sx={{float: "right"}}/></MenuItem>
-                            <MenuItem onClick={props.handleMetricsDialogOpen}>Metrics</MenuItem>
                         </Menu>
                     </div>
 
