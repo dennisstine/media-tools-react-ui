@@ -1,10 +1,10 @@
 version: '3'
 
 services:
-  ui-port-80:
-    container_name: server-home-page
+  ninjaflix-ui:
+    container_name: ninjaflix-ui
     hostname: plex-server
-    image: dennisstine/media-server-home
+    image: dennisstine/ninjaflix
     volumes:
       - /etc/letsencrypt/live/minininja.dev/fullchain.pem:/etc/letsencrypt/live/minininja.dev/fullchain.pem
       - /etc/letsencrypt/live/minininja.dev/privkey.pem:/etc/letsencrypt/live/minininja.dev/privkey.pem
