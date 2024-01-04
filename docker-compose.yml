@@ -8,6 +8,7 @@ services:
     volumes:
       - /etc/letsencrypt/live/minininja.dev/fullchain.pem:/etc/letsencrypt/live/minininja.dev/fullchain.pem
       - /etc/letsencrypt/live/minininja.dev/privkey.pem:/etc/letsencrypt/live/minininja.dev/privkey.pem
+      - /etc/ssl/certs/dhparam.pem:/etc/ssl/certs/dhparam.pem
     ports:
       - "80:80"
       - "443:443"
