@@ -111,7 +111,7 @@ function App() {
                             {/* -- radarr -- */}
                             <ContainerServiceListItem serviceName={'radarr'}
                                                       primaryText={'Radarr'}
-                                                      secondaryText={'Find new movies to download and watch'}
+                                                      secondaryText={'Find movies to download and watch'}
                                                       subdomain={'radarr'}/>
                             {/* -- sonarr -- */}
                             <ContainerServiceListItem serviceName={'sonarr'}
@@ -121,7 +121,7 @@ function App() {
                             {/* -- sabnzbd -- */}
                             <ContainerServiceListItem serviceName={'sabnzbd'}
                                                       primaryText={'sabnzbd'}
-                                                      secondaryText={'Check out what\'s downloading'}
+                                                      secondaryText={'Check out what\'s downloading or queued'}
                                                       subdomain={'sabnzbd'}/>
                             <Collapse in={advancedOpen} timeout="auto" unmountOnExit>
                                 <List component="div" disablePadding>
