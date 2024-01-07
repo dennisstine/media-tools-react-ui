@@ -37,7 +37,7 @@ Generating DH parameters, 2048 bit long safe prime
 
 
 
-certbot certonly --expand -d minininja.dev -d plex.minininja.dev -d radarr.minininja.dev -d sonarr.minininja.dev -d sabnzbd.minininja.dev -d dex.minininja.dev -d cockpit.minininja.dev -d grafana.minininja.dev -d prometheus.minininja.dev
+certbot certonly --expand -d minininja.dev -d plex.minininja.dev -d radarr.minininja.dev -d sonarr.minininja.dev -d sabnzbd.minininja.dev -d dex.minininja.dev -d cockpit.minininja.dev -d grafana.minininja.dev -d prometheus.minininja.dev -d minecraft.minininja.dev
 
 
 
